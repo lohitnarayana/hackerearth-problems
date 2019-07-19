@@ -1,0 +1,70 @@
+Being alone in the new world, Monk was little afraid and wanted to make some friends. 
+So he decided to go the famous dance club of that world, i.e "DS Club" and met a very beautiful array A of N integers 
+A
+1
+,
+A
+2
+.
+.
+.
+A
+N
+, but for some reasons she was very sad. 
+Being asked by Monk, she told him that she wants to find out the total number of subarrays in it, having their sum even. 
+In order to impress her, Monk wants to solve this problem for her. Help him for the same.
+
+INPUT:
+First line of input will consists of integer N. Next line will consists of N integers 
+
+OUTPUT:
+Print total number of subarrays of this array with even sum.
+
+CONSTRAINTS:
+1 ≤ N ≤ 105
+1 ≤ Ai ≤ 106
+
+SOURCE LINK: https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/lonely-monk-code-monk/
+SAMPLE INPUT 
+5
+2 5 4 4 4 
+SAMPLE OUTPUT 
+7
+Explanation
+All the even sum subarrays are:
+1) [1,1] (i.e from index 1 to index 1) 
+2) [3,5] (i.e from index 3 to index 5) 
+3) [3,4] (i.e from index 3 to index 4) 
+4) [4,5] (i.e from index 4 to index 5) 
+5) [3,3] (i.e from index 3 to index 3) 
+6) [4,4] (i.e from index 4 to index 4) 
+7) [5,5] (i.e from index 5 to index 5)
+
+
+
+
+PROGRAM:
+
+#include <stdio.h>
+
+int main()
+{
+long n;
+scanf("%ld",&n);
+long arr[n];
+long i,count = 0;
+long even = 0, odd = 0;
+arr[0] = 0;
+for(i = 1; i <=n; ++i)
+{ 
+scanf("%ld",arr+i);
+arr[i] += arr[i-1];
+if(arr[i]%2)
+odd++;
+else
+even++;
+}
+count = (even*(even-1))/2 +even + (odd*(odd-1))/2;
+printf("%ld",count);
+return 0;
+}
